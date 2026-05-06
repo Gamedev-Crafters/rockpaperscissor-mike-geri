@@ -29,32 +29,41 @@ public class RockPaperScissors
 
 		return string.Empty;
 	}
+	
+	public static string Rock() => "Rock";
+	public static string Paper() => "Paper";
+	public static string Scissors() => "Scissors";
+	
+	public static string Player1() => "Player1";
+	public static string Player2() => "Player2";
+	
+	public static string Tie() => "Tie";
 }
 
 public class Tests {
 
 	[Test]
 	public void RockBeatsScissors() {
-		Assert.That(RockPaperScissors.Play("Rock", "Scissors"), Is.EqualTo("Player1"));
-		Assert.That(RockPaperScissors.Play("Scissors", "Rock"), Is.EqualTo("Player2"));
+		Assert.That(RockPaperScissors.Play(RockPaperScissors.Rock(), RockPaperScissors.Scissors()), Is.EqualTo(RockPaperScissors.Player1()));
+		Assert.That(RockPaperScissors.Play(RockPaperScissors.Scissors(), RockPaperScissors.Rock()), Is.EqualTo(RockPaperScissors.Player2()));
 	}
 
 	[Test]
 	public void PaperBeatsRock()
 	{
-		Assert.That(RockPaperScissors.Play("Paper", "Rock"), Is.EqualTo("Player1"));
-		Assert.That(RockPaperScissors.Play("Rock", "Paper"), Is.EqualTo("Player2"));
+		Assert.That(RockPaperScissors.Play(RockPaperScissors.Paper(), RockPaperScissors.Rock()), Is.EqualTo(RockPaperScissors.Player1()));
+		Assert.That(RockPaperScissors.Play(RockPaperScissors.Rock(), RockPaperScissors.Paper()), Is.EqualTo(RockPaperScissors.Player2()));
 	}
 
 	[Test]
 	public void ScissorsBeatsPaper() {
-		Assert.That(RockPaperScissors.Play("Scissors", "Paper"), Is.EqualTo("Player1"));
-		Assert.That(RockPaperScissors.Play("Paper", "Scissors"), Is.EqualTo("Player2"));
+		Assert.That(RockPaperScissors.Play(RockPaperScissors.Scissors(), RockPaperScissors.Paper()), Is.EqualTo(RockPaperScissors.Player1()));
+		Assert.That(RockPaperScissors.Play(RockPaperScissors.Paper(), RockPaperScissors.Scissors()), Is.EqualTo(RockPaperScissors.Player2()));
 	}
 
 	[Test]
 	public void SameMoveTie()
 	{
-		Assert.That(RockPaperScissors.Play("Paper", "Paper"), Is.EqualTo("Tie"));
+		Assert.That(RockPaperScissors.Play(RockPaperScissors.Paper(), RockPaperScissors.Paper()), Is.EqualTo(RockPaperScissors.Tie()));
 	}
 }
