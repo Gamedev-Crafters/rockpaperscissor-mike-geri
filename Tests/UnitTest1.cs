@@ -22,7 +22,16 @@ public class Tests {
 		Assert.That(RockPaperScissors("Paper", "Scissors"), Is.EqualTo("Player2"));
 	}
 
-	private string RockPaperScissors(string player1, string player2) {
+	[Test]
+	public void SameMoveTie()
+	{
+		Assert.That(RockPaperScissors("Paper", "Paper"), Is.EqualTo("Tie"));
+	}
+
+	private string RockPaperScissors(string player1, string player2)
+	{
+		if (player1 == player2)
+			return "Tie";
 		if (player1 == "Scissors" && player2 == "Paper")
 			return "Player1";
 		if (player2 == "Paper")
