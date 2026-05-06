@@ -31,17 +31,35 @@ public class Tests {
 	private string RockPaperScissors(string player1, string player2)
 	{
 		if (player1 == player2)
+		{
 			return "Tie";
+		}
+
 		if (player1 == "Scissors" && player2 == "Paper")
+		{
 			return "Player1";
+		}
+
 		if (player2 == "Paper")
+		{
 			return "Player2";
+		}
+
 		if (player1 == "Rock")
+		{
 			return "Player1";
-		if (player1 == "Paper" && player2 == "Scissors")
-			return "Player2";
+		}
+
 		if (player1 == "Paper")
+		{
+			if (player2 == "Scissors")
+			{
+				return "Player2";
+			}
+			
 			return "Player1";
+		}
+
 		return "Player2";
 	}
 }
