@@ -2,33 +2,9 @@ using NUnit.Framework.Constraints;
 
 namespace Tests;
 
-public class Tests {
-	[Test]
-	public void RockBeatsScissors() {
-		Assert.That(RockPaperScissors("Rock", "Scissors"), Is.EqualTo("Player1"));
-		Assert.That(RockPaperScissors("Scissors", "Rock"), Is.EqualTo("Player2"));
-	}
-
-	[Test]
-	public void PaperBeatsRock()
-	{
-		Assert.That(RockPaperScissors("Paper", "Rock"), Is.EqualTo("Player1"));
-		Assert.That(RockPaperScissors("Rock", "Paper"), Is.EqualTo("Player2"));
-	}
-
-	[Test]
-	public void ScissorsBeatsPaper() {
-		Assert.That(RockPaperScissors("Scissors", "Paper"), Is.EqualTo("Player1"));
-		Assert.That(RockPaperScissors("Paper", "Scissors"), Is.EqualTo("Player2"));
-	}
-
-	[Test]
-	public void SameMoveTie()
-	{
-		Assert.That(RockPaperScissors("Paper", "Paper"), Is.EqualTo("Tie"));
-	}
-
-	private string RockPaperScissors(string player1, string player2)
+public class RockPaperScissors
+{
+	public static string Play(string player1, string player2)
 	{
 		if (player1 == player2)
 			return "Tie";
@@ -52,5 +28,33 @@ public class Tests {
 		}
 
 		return string.Empty;
+	}
+}
+
+public class Tests {
+
+	[Test]
+	public void RockBeatsScissors() {
+		Assert.That(RockPaperScissors.Play("Rock", "Scissors"), Is.EqualTo("Player1"));
+		Assert.That(RockPaperScissors.Play("Scissors", "Rock"), Is.EqualTo("Player2"));
+	}
+
+	[Test]
+	public void PaperBeatsRock()
+	{
+		Assert.That(RockPaperScissors.Play("Paper", "Rock"), Is.EqualTo("Player1"));
+		Assert.That(RockPaperScissors.Play("Rock", "Paper"), Is.EqualTo("Player2"));
+	}
+
+	[Test]
+	public void ScissorsBeatsPaper() {
+		Assert.That(RockPaperScissors.Play("Scissors", "Paper"), Is.EqualTo("Player1"));
+		Assert.That(RockPaperScissors.Play("Paper", "Scissors"), Is.EqualTo("Player2"));
+	}
+
+	[Test]
+	public void SameMoveTie()
+	{
+		Assert.That(RockPaperScissors.Play("Paper", "Paper"), Is.EqualTo("Tie"));
 	}
 }
