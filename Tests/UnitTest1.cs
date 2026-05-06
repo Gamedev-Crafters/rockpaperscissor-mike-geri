@@ -9,25 +9,19 @@ public class RockPaperScissors
 		if (player1 == player2)
 			return Tie();
 
-		if (player1 == Scissors()) {
-			if (player2 == Paper())
-				return Player1();
+		if (player1 == Scissors() && player2 == Paper())
+			return Player1();
+		if (player1 == Scissors())
 			return Player2();
-		}
 
-		if (player1 == Rock()) {
-			if (player2 == Paper())
-				return Player2();
+		if (player1 == Rock() && player2 == Paper())
+			return Player2();
+		if (player1 == Rock())
 			return Player1();
-		}
 
-		if (player1 == Paper()) {
-			if (player2 == Scissors())
-				return Player2();
-			return Player1();
-		}
-
-		return string.Empty;
+		if (player1 == Paper() && player2 == Scissors())
+			return Player2();
+		return Player1();
 	}
 	
 	public static string Rock() => "Rock";
