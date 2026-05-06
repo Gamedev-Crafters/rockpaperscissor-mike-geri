@@ -16,11 +16,21 @@ public class Tests {
 		Assert.That(RockPaperScissors("Rock", "Paper"), Is.EqualTo("Player2"));
 	}
 
+	[Test]
+	public void ScissorsBeatsPaper() {
+		Assert.That(RockPaperScissors("Scissors", "Paper"), Is.EqualTo("Player1"));
+		Assert.That(RockPaperScissors("Paper", "Scissors"), Is.EqualTo("Player2"));
+	}
+
 	private string RockPaperScissors(string player1, string player2) {
+		if (player1 == "Scissors" && player2 == "Paper")
+			return "Player1";
 		if (player2 == "Paper")
 			return "Player2";
 		if (player1 == "Rock")
 			return "Player1";
+		if (player1 == "Paper" && player2 == "Scissors")
+			return "Player2";
 		if (player1 == "Paper")
 			return "Player1";
 		return "Player2";
